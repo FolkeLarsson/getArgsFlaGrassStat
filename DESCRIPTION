@@ -1,10 +1,10 @@
 Package: getArgsflaGrassStat
 Title: read arguments
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person("Folke", "Larsson", email = "fl_blogs@fldbd.com", role = c("aut", "cre"))
 Description: Reading arguments from an ini-file or command prompt for a specific Grass-GDAL project.
 Depends: R (>= 3.4.3)
-Imports: stringr, devtools
+Imports: stringr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
