@@ -21,6 +21,11 @@ dataframe with processed arguments
 \description{
 reads parameters from an ini-file or command prompt into a dataframe that it returns. part of specific project.
 }
+\examples{
+/dontrun{
+df_args <- read_arguments("file path", "params.ini", TRUE, "calculate_means")
+}
+}
 \author{
 Folke Larsson in Boden Sweden
 }

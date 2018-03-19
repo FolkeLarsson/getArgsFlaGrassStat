@@ -17,6 +17,11 @@ dataframe with rows conaining arguments
 \description{
 read variables from an ini-file into a dataframe that it returns. Part of specific project.
 }
+\examples{
+/donttest {
+	df_argument_rows <- read_ini_file("/grass7/parameter_files", "parameters.ini")
+}
+}
 \author{
 Folke Larsson Boden Sweden
 }
