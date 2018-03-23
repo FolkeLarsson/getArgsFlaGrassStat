@@ -21,7 +21,13 @@ library(methods)
 
 read_ini_file <- function(v_path, v_filename){
 	full_filename <- paste(paste(v_path, "/", sep=""), v_filename, sep="")
-	fpath <- file.path(v_path, v_filename, sep=".Platform$file.sep")
+	#fpath <- file.path(v_path, v_filename, sep=".Platform$file.sep")
+	if (.Platform$OS.type == "windows") {
+		file_sep <- "\\\\" } 
+	else {
+		file_sep=.Platform$file.sep
+	} # if else	
+	fpath <- file.path(v_path, v_filename, sep=file_sep)
 	if(file.exists(full_filename)) {
 		df_parameters <- utils::read.csv2(full_filename, header=FALSE)
 	} else {
