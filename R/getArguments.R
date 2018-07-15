@@ -113,7 +113,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 		for(ind in 1:nr_file_rows) {
 			#browser()
 			curr_par <- df_ini_file[ind,1]
-			
+			print(curr_par)
 			if(regexpr(regexp_task, curr_par)[1] > 0 ) {
 				df_args$task <- regmatches(curr_par, regexpr(regexp_task, curr_par))
 			}
