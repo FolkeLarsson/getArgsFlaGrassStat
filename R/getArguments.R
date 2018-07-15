@@ -143,10 +143,12 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			}
 			
 			if(regexpr(regexp_gisbase, curr_par)[1] >0 ) {
+				print(curr_par)
 				df_args$gisbase <- regmatches(curr_par, regexpr(regexp_gisbase, curr_par))
 			}
 			
 			if(regexpr(regexp_gisdbase, curr_par)[1] >0 ) {
+				print(curr_par)
 				df_args$gisdbase <- regmatches(curr_par, regexpr(regexp_gisdbase, curr_par))
 			}
 			
@@ -187,6 +189,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			}
 
 			if(regexpr(regexp_mapset, curr_par)[1] > 0) {
+				print(curr_par)
 				df_args$mapset <- regmatches(curr_par, regexpr(regexp_mapset, curr_par))
 			}
 			
