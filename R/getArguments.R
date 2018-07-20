@@ -128,6 +128,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 
 			if(regexpr(regexp_shapefile, curr_par)[1] > 0 ) {
 				df_args$shapefile <- regmatches(curr_par, regexpr(regexp_shapefile, curr_par))
+				prin(regexp_shapefile, curr_par))
 			}
 			
 			if(regexpr(regexp_mapfile, curr_par)[1] > 0) {
@@ -145,11 +146,13 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			if(regexpr(regexp_gisbase, curr_par)[1] >0 ) {
 				print(curr_par)
 				df_args$gisbase <- regmatches(curr_par, regexpr(regexp_gisbase, curr_par))
+				print(regexpr(regexp_gisbase, curr_par))
 			}
 			
 			if(regexpr(regexp_gisdbase, curr_par)[1] >0 ) {
 				print(curr_par)
 				df_args$gisdbase <- regmatches(curr_par, regexpr(regexp_gisdbase, curr_par))
+				print(regexpr(regexp_gisdbase, curr_par))
 			}
 			
 			if(regexpr(regexp_ulx, curr_par)[1] >0 ) {
