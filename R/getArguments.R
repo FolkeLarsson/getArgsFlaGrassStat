@@ -224,6 +224,8 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 		if (length(df_args$gisbase)>0) { 
 			dir_list <- unlist(strsplit(df_args$gisbase, ":"))
 			df_args$gisbase    <- dir_list[length(df_args$gisbase)]
+			print(length(df_args$gisbase))
+			print(dir_list[length(df_args$gisbase)])
 		}
 		
 		if (length(df_args$gisdbase)>0) { 
