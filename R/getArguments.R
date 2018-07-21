@@ -130,6 +130,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 				df_args$shapefile <- regmatches(curr_par, regexpr(regexp_shapefile, curr_par))
 				print(regexpr(regexp_shapefile, curr_par))
 				print(regmatches(curr_par, regexpr(regexp_shapefile, curr_par)))
+				print(df_args$shapefile)
 			}
 			
 			if(regexpr(regexp_mapfile, curr_par)[1] > 0) {
@@ -222,7 +223,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 
 		if (length(df_args$gisbase)>0) { 
 			dir_list <- unlist(strsplit(df_args$gisbase, ":"))
-			df_args$gisbase    <- dir_list[2]
+			df_args$gisbase    <- dir_list[length(df_args$gisbase)]
 		}
 		
 		if (length(df_args$gisdbase)>0) { 
@@ -302,7 +303,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 		
 		if (length(df_args$shapefile)>0) { 
 			dir_list <- unlist(strsplit(df_args$shapefile, ":"))
-			df_args$shapefile <- dir_list[2]
+			df_args$shapefile <- dir_list[length(df_args$shapefile)]
 		}# if
 		
 		if (length(df_args$grassraster)>0) { 
