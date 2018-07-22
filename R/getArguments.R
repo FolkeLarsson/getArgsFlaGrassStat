@@ -129,9 +129,9 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 
 			if(regexpr(regexp_shapefile, curr_par)[1] > 0 ) {
 				df_args$shapefile <- regmatches(curr_par, regexpr(regexp_shapefile, curr_par))
-				print(regexpr(regexp_shapefile, curr_par))
-				print(regmatches(curr_par, regexpr(regexp_shapefile, curr_par)))
-				print(df_args$shapefile)
+				#print(regexpr(regexp_shapefile, curr_par))
+				#print(regmatches(curr_par, regexpr(regexp_shapefile, curr_par)))
+				#print(df_args$shapefile)
 			}
 			
 			if(regexpr(regexp_mapfile, curr_par)[1] > 0) {
@@ -147,16 +147,16 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			}
 			
 			if(regexpr(regexp_gisbase, curr_par)[1] >0 ) {
-				print(curr_par)
+				#print(curr_par)
 				df_args$gisbase <- regmatches(curr_par, regexpr(regexp_gisbase, curr_par))
-				print(regexpr(regexp_gisbase, curr_par))
+				#print(regexpr(regexp_gisbase, curr_par))
 			}
 			
 			if(regexpr(regexp_gisdbase, curr_par)[1] >0 ) {
-				print(curr_par)
+				#print(curr_par)
 				df_args$gisdbase <- regmatches(curr_par, regexpr(regexp_gisdbase, curr_par))
-				print(regexpr(regexp_gisdbase, curr_par))
-				print(regmatches(curr_par, regexpr(regexp_gisdbase, curr_par)))
+				#print(regexpr(regexp_gisdbase, curr_par))
+				#print(regmatches(curr_par, regexpr(regexp_gisdbase, curr_par)))
 			}
 			
 			if(regexpr(regexp_ulx, curr_par)[1] >0 ) {
@@ -196,7 +196,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			}
 
 			if(regexpr(regexp_mapset, curr_par)[1] > 0) {
-				print(curr_par)
+				#print(curr_par)
 				df_args$mapset <- regmatches(curr_par, regexpr(regexp_mapset, curr_par))
 			}
 			
@@ -237,7 +237,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			} else {
 				df_args$gisdbase    <- paste(dir_list[2], ":", dir_list[3], sep="")
 			}
-			print(df_args$gisdbase)
+			#print(df_args$gisdbase)
 		}
 
 		if (length(df_args$radiusseq)>0) { 
@@ -302,12 +302,22 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 		
 		if (length(df_args$classfile)>0) { 
 			dir_list <- unlist(strsplit(df_args$classfile, ":"))
-			df_args$classfile <- dir_list[2]
+			#df_args$classfile <- dir_list[2]
+			if (length(dir_list) == 2) {
+				df_args$classfile    <- dir_list[2]
+			} else {
+				df_args$classfile   <- paste(dir_list[2], ":", dir_list[3], sep="")
+			}	
 		}	
 		
 		if (length(df_args$mapfile)>0) { 
 			dir_list <- unlist(strsplit(df_args$mapfile, ":"))
-			df_args$mapfile <- dir_list[2]
+			#df_args$mapfile <- dir_list[2]
+			if (length(dir_list) == 2) {
+				df_args$mapfile    <- dir_list[2]
+			} else {
+				df_args$mapfile   <- paste(dir_list[2], ":", dir_list[3], sep="")
+			}			
 		}
 		
 		if (length(df_args$shapefile)>0) { 
