@@ -224,10 +224,16 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 
 		if (length(df_args$gisbase)>0) { 
 			dir_list <- unlist(strsplit(df_args$gisbase, ":"))
-			df_args$gisbase    <- dir_list[length(df_args$gisbase)]
-			print("strsplit")
-			print(length(dir_list))
-			print( paste(dir_list[length(dir_list)-1], ":", dir_list[length(dir_list)], sep="") )
+			#df_args$gisbase    <- dir_list[length(df_args$gisbase)]
+			#print("strsplit")
+			#print(length(dir_list))
+			if (length(dir_list) == 2) {
+				df_args$gisbase    <- dir_list[2]
+			} else {
+				df_args$gisbase    <- paste(dir_list[2], ":", dir_list[3], sep="")
+			}
+			#print(df_args$gisdbase)		#print( paste(dir_list[length(dir_list)-1], ":", dir_list[length(dir_list)], sep="") )
+			
 		}
 		
 		if (length(df_args$gisdbase)>0) { 
@@ -328,7 +334,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			} else {
 				df_args$shapefile    <- paste(dir_list[2], ":", dir_list[3], sep="")
 			}
-			print(df_args$shapefile)
+			#print(df_args$shapefile)
 			
 		}# if
 		
