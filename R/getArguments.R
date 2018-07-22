@@ -67,7 +67,8 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 # regular_expressionx
 	regexp_identifier <- "([A-Z|a-z|0-9]|(\\_))+"
 	#regexp_path <- "((\\/)|C(\\:)|c(\\:))(([A-Z|a-z]|[0-9]|(\\_))+((\\/)|(\\\\))?)+"	
-	regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_))+)((\\/)|(\\\\)){1})+"
+	#regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_))+)((\\/)|(\\\\)){1})+"
+	regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_)|(\\.)|(\\-))+)((\\/)|(\\\\)){1})+"
 	regexp_file <- paste(regexp_path, regexp_identifier, "(\\.(tif|shp|rec))", sep="")
 	regexp_task <- "^TASK(\\:)(clip_and_create_rasters|calculate_means|calculate_classes)"
 	#regexp_pos <- "(ULX(\\:)|ULY(\\:)|LRX(\\:)|LRY(\\:))([0-9]+(\\.)*[0-9])+"
@@ -108,7 +109,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 	if (v_read_from_inifile == "TRUE") {	
 		#df_ini_file <- read_ini_file("/home/follar/grass7/maps/parameter_files", "RGrass_parameters.ini")
 		df_ini_file <- read_ini_file(v_filepath, v_filename)
-		#print(str(df_ini_file))
+		print(str(df_ini_file))
 		nr_file_rows <- nrow(df_ini_file)
 		for(ind in 1:nr_file_rows) {
 			#browser()
@@ -226,7 +227,7 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			df_args$gisbase    <- dir_list[length(df_args$gisbase)]
 			print("strsplit")
 			print(length(dir_list))
-			print( paste(dir_list[length(dir_list)-1], dir_list[length(dir_list)], sep="") )
+			print( paste(dir_list[length(dir_list)-1], ":", dir_list[length(dir_list)], sep="") )
 		}
 		
 		if (length(df_args$gisdbase)>0) { 
@@ -234,8 +235,9 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 			if (length(dir_list) == 2) {
 				df_args$gisdbase    <- dir_list[2]
 			} else {
-				df_args$gisdbase    <- paste(dir_list[2], dir_list[3], sep="")
+				df_args$gisdbase    <- paste(dir_list[2], ":", dir_list[3], sep="")
 			}
+			print(df_args$gisdbase)
 		}
 
 		if (length(df_args$radiusseq)>0) { 
@@ -310,7 +312,13 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 		
 		if (length(df_args$shapefile)>0) { 
 			dir_list <- unlist(strsplit(df_args$shapefile, ":"))
-			df_args$shapefile <- dir_list[length(dir_list)]
+			#df_args$shapefile <- dir_list[length(dir_list)]
+			if (length(dir_list) == 2) {
+				df_args$shapefile    <- dir_list[2]
+			} else {
+				df_args$shapefile    <- paste(dir_list[2], ":", dir_list[3], sep="")
+			}
+			print(df_args$shapefile)
 			
 		}# if
 		
