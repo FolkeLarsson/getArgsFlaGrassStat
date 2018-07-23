@@ -68,7 +68,8 @@ read_arguments <- function(v_filepath, v_filename, v_read_from_inifile, v_task) 
 	regexp_identifier <- "([A-Z|a-z|0-9]|(\\_))+"
 	#regexp_path <- "((\\/)|C(\\:)|c(\\:))(([A-Z|a-z]|[0-9]|(\\_))+((\\/)|(\\\\))?)+"	
 	#regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_))+)((\\/)|(\\\\)){1})+"
-	regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_)|(\\.)|(\\-))+)((\\/)|(\\\\)){1})+"
+	#regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_)|(\\.)|(\\-))+)((\\/)|(\\\\)){1})+"
+	regexp_path <- "((\\/)|(C:\\\\)|(c:\\\\))((([A-Z|a-z]|[0-9]|(\\_)|(\\.)|(\\-))+)((\\/)|(\\\\))?)+"
 	regexp_file <- paste(regexp_path, regexp_identifier, "(\\.(tif|shp|rec))", sep="")
 	regexp_task <- "^TASK(\\:)(clip_and_create_rasters|calculate_means|calculate_classes)"
 	#regexp_pos <- "(ULX(\\:)|ULY(\\:)|LRX(\\:)|LRY(\\:))([0-9]+(\\.)*[0-9])+"
